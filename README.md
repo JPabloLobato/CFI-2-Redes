@@ -82,7 +82,7 @@ Hemos creado un ejemplo dividiendo el bloque 172.22.53.0/22 en 4 subredes para d
 | Servidores  | 172.22.58.0      | 172.22.58.1 – 172.22.58.254 | 172.22.58.255   |
 #### 3.2 Enrutamiento
 - **Algoritmo:** Dijkstra para rutas óptimas.  
-#Insertar foto
+# Insertar foto
 
 ### 4. Capa de Transporte – Selección y Cálculo de Ventana
 
@@ -121,35 +121,82 @@ Así aseguramos una transmisión fluida y rápida de archivos grandes a través 
 
 ### 5. Capa de Aplicación – Servicios y Multiplexación
 
-- **Transferencia de archivos:** SFTP (cifrado).  
-- **Streaming:** HTTPS + MPEG-DASH (adaptativo).  
-- **Multiplexación:** Hilos/procesos asíncronos.  
+#### 5.1 Diseño de servicios 
+
+Para la transferencia de archivos se usará como estándar STFP por su cifrado lo que da confidencialidad e integridad. 
+
+En Streaming (Multimedia) se decidirá por HTTPS por el cifrado y autentificación y Dash que permite adaptar la calidad del streaming seguún el ancho de banda de cada usuario, de esta forma con estas dos opciones permiten entregar contenido fluido y adaptable. 
+
+En resolución de nombres DNSSEC refuerza la seguridad del sistema en este tipo de entornos. 
+
+Ya que se trata de un entorno académico al cual se espera que accedan una gran cantidad de usuarios, la multiplexacion usará de puertos lógicos y conexiones HTTP/HTTPS para las múltiples solicitudes. 
+
+El servidor web será capaz de manejar conexiones concurrentes mediante el uso de hilos o procesos asíncronos, dependiendo del sistema operativo y el servidor.  
+
+---
+
+### 6. Multimedia
+
+#### 6.1 Streaming Multimedia
+Codificación y compresión de contenido: 
+Se utilizarán códecs como H.264/H.265 para video y AAC/Opus para audio, ya que permite una buena relación entre calidad y compresión. 
+
+Técnicas de streaming adaptativo: 
+ Se implementará Adaptive HTTP Streaming, específicamente MPEG-DASH (Dynamic Adaptive Streaming over HTTP), para ajustar dinámicamente la calidad del video en función del ancho de banda del usuario. 
+
+Sincronización de audio y video: 
+ La entrega de contenido multimedia garantizará la correcta sincronización temporal mediante el uso de timestamps y buffers de reproducción. 
+
+Minimización de latencia y jitter: 
+ Se preferirá el uso de protocolos como UDP con mecanismos de corrección de errores en tiempo real para el streaming en vivo. En entornos modernos, también se evaluará el uso de QUIC para menor latencia en conexiones HTTP/3. 
+
+Calidad de Servicio (QoS): 
+ Se aplicarán políticas de calidad de servicio para priorizar el tráfico multimedia en la red. Se utilizarán técnicas como DSCP (Differentiated Services Code Point) para garantizar una baja latencia y menor pérdida de paquetes. 
+ 
+Interoperabilidad con la capa de aplicación: 
+La capa de multimedia trabajará conjuntamente con protocolos de aplicación como HTTP/HTTPS. 
 
 ---
 
 ### 7. Seguridad – Estrategias y Configuraciones
 
-#### 7.1 Medidas
-1. **VPN:** Cifrado AES-256.  
-2. **Firewalls (ACLs):** Filtrado por IP/protocolo.  
-3. **NAT Dinámico:** Oculta IPs internas.  
-4. **Cifrado:** AES-256 (simétrico) y RSA-2048 (asimétrico).  
-5. **DNSSEC:** Protege contra spoofing.  
+#### 7.1 Medidas de Seguridad
+En esta red vamos a implementar cinco medidas de seguridad: 
+
+1. **VPN (Red Privada Virtual - Site-to-Site)**  
+   Para conectar instituciones que estén separadas utilizaremos VPN. Es verdad que no es el mejor método, pero es el más utilizado lo que hará que un técnico en un futuro pueda arreglar los fallos con más facilidad.  
+   Gracias a ello, aseguraremos la confidencialidad e integridad de los datos al viajare a través de redes públicas y tendrá un cifrado fuerte como el AES.  
+
+2. **Firewalls - ACLs (Lista de Control de Acceso)**  
+   Implementaremos ACLs en los routers y en los switches que sean necesarios para filtrar el tráfico a través de segmentos VLANs. Con esto mejoraremos el tráfico restringir el acceso dependiendo de las IPs, protocolos o puerto.  
+
+3. **NAT (Traducción de Direcciones de Red)**  
+   Para protegernos del exterior utilizaremos NAT. Esto permitira que los dispositivos internos compartan una única dirección IP pública. Lo que hace es ocultar la estructura interna de la red, reduce el número de IP públicas y controlo el tráfico de salida, solo lo utilizaremos para la red interna no para la dmz ya que debe ser pública a internet, por ello solo necesitaremos un NAT dinámico.  
+
+4. **Cifrado de Datos Simétrico y Asimétrico**  
+   - **Cifrado simétrico (AES-256):** Aplicaremos el AES-256 en las comunicaciones VPN para cifrar los datos de una forma más eficiente, este usa una única clave para cifrar y descifrar. Además, destaca por su velocidad y seguridad.  
+   - **Cifrado asimétrico (RSA-2048):** Lo usaremos para el intercambio seguro de claves en la configuración inicial de las VPN y en la autenticación de los servicios críticos. Este tipo de cifrado nos asegurará la identificación de los extremos y evitará ataques futuros como Man in the Middle.  
+
+5. **Seguridad del Sistema de Nombres de Dominio (DNSSEC)**  
+   Este sistema nos servirá para proteger el servicio de resolución de los nombres. Su funcionamiento consta en añadir firmas digitales a los registros DNS, de esta forma los clientes podrán validar que las respuestas provienen de un servidor legítimo. Con ello prevenimos de ataques como DNS spoofing o cache poisoning capaces de redirigir al usuario a sitios falsos sin que lo sepa.  
 
 #### 7.2 Documentación
-| Medida       | Función                          | Justificación                          |
-|--------------|----------------------------------|----------------------------------------|
-| VPN          | Conexión segura entre sedes      | Cifrado estándar, fácil mantenimiento. |
-| ACLs         | Filtrado de tráfico              | Control de accesos.                    |
-
+| Medida           | Función principal                          | Justificación técnica |
+|------------------|-------------------------------------------|-----------------------|
+| VPN              | Enlace seguro entre instituciones separadas | Protege la información con cifrado, solución estandar, facil de mantener. |
+| ACLs (Firewall)  | Filtrado de tráfico que pasan por los routers y switches | Controla accesos y mejora el rendimiento mediante reglas |
+| NAT Dinámico     | Traducción de IPs privadas a públicas     | Deja navegar por la red externa sin exponer la red interna. |
+| Cifrado AES-256  | Cifrado veloz de los datos en tránsito (simétrico) | Seguridad muy fuerte con gran rendimiento, perfecto para conexiones VPN |
+| Cifrado RSA-2048 | Intercambio de claves seguro (asimétrico) | Se asegura la autenticidad de los extremos, evita suplantación |
+| DNSSEC           | Verificación criptográfica de respuestas DNS | Protege contra falsificaciones DNS y asegura la integridad del sistema de nombres |
 ---
 
 ### 8. Implementación en Cisco Packet Tracer
 
-#### 8.1 Topología
-- Diseño de red con routers, switches y VLANs.  
-#### 8.2 Pruebas
-- Verificación de conectividad y QoS.  
+#### 8.1 Construcción de la Topología:
+##### RELLENAR CON LO QUE FALTE
+#### 8.2 Pruebas y Verificación:
+##### RELLENAR CON LO QUE FALTE
 
 --- 
 
