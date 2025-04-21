@@ -110,7 +110,12 @@ Hemos creado un ejemplo dividiendo el bloque 172.22.53.0/22 en 4 subredes para d
 | Servidores  | 172.22.58.0      | 172.22.58.1 – 172.22.58.254 | 172.22.58.255   |
 #### 3.2 Enrutamiento
 - **Algoritmo:** Dijkstra para rutas óptimas.  
-# Insertar foto
+![](https://github.com/JPabloLobato/CFI-2-Redes/blob/4a5d41ea6446cf64bc5c946dd599235bb8b02d0b/algoritmoDijkstra.drawio.png)
+***Como vemos en la imagen, las tres sedes (Laboratorio, Biblioteca y Aula) casi siempre tardan 1 ms en enviar y recibir paquetes entre ellas. Al hacer el primer ping entre Aula y Laboratorio, algunos paquetes tardaron hasta 8 ms, pero en el segundo intento fue de 1 ms, así que podemos asumir que la latencia normal es de 1 ms.
+
+Basándonos en el diagrama de Dijkstra, para ir de cualquier sede (ya sea Aula, Laboratorio o Biblioteca), la forma más óptima es ir directamente, ya que los caminos tienen el menor coste posible.
+
+Sin embargo, en nuestra red real esto no es del todo aplicable, ya que la conexión está diseñada en forma de anillo, incluyendo también la sala de servidores y la recepción. Por eso, aunque la diferencia sea mínima, para ir de Biblioteca a Aula (o al revés), lo más eficiente podría ser pasar por el Laboratorio. Esto no se refleja en el diagrama, ya que solo se tienen en cuenta las tres zonas indicadas en el enunciado.***
 
 ### 4. Capa de Transporte – Selección y Cálculo de Ventana
 
