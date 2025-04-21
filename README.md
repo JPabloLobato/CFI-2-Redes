@@ -229,6 +229,7 @@ En esta red vamos a implementar cinco medidas de seguridad:
 
 #### 8.1 Construcción de la Topología:
 ![](https://github.com/JPabloLobato/CFI-2-Redes/blob/main/Cisco.jpg)<br>
+(El .pkt esta en la carpeta cisco packet tracer.)
 #### Modulos:
 DMZ:<br>
 ![](https://github.com/JPabloLobato/CFI-2-Redes/blob/main/dmz.jpg)<br>
