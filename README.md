@@ -85,7 +85,7 @@ A continuación se muestra el esquema del sistema propuesto
                      └── Proyector
 
 ````
-#### Como se observa en el diagrama, se tratra de una red donde hay un router con acceso a internet que lleva firewall con zona desmilitarizada donde se alojan los servidores www/mail/dns, después sale por un firewall interno que lleva a un switch nucleo que forma parte de un anillo de switches que recorre donde cada switch corresponde a su sala pertinente, como sala servidores, sala recepción,sala aula, sala laboratorio y sala biblioteca
+#### Como se observa en el diagrama, se tratra de una red donde hay un router con acceso a internet que lleva firewall con zona desmilitarizada donde se alojan los servidores www/mail/dns, después sale por un firewall interno que lleva a un switch nucleo que forma parte de un anillo de switches que recorre donde cada switch corresponde a su sala pertinente, como sala servidores, sala recepción,sala biblioteca ,sala aula y sala laboratorio para finalmente volver al witch núcleo.
 ---
 ### 2. Capa Física – Capacidad y Modulación
 
