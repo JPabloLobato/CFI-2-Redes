@@ -230,15 +230,16 @@ En esta red vamos a implementar cinco medidas de seguridad:
 #### 8.1 Construcción de la Topología:
 ![](https://github.com/JPabloLobato/CFI-2-Redes/blob/main/Cisco.jpg)
 #### Modulos:
-DMZ:
+DMZ:<br>
 ![](https://github.com/JPabloLobato/CFI-2-Redes/blob/main/dmz.jpg)
-Servidores:
+Servidores:<br>
 ![](https://github.com/JPabloLobato/CFI-2-Redes/blob/main/servidores.jpg)
-Recepción:
+Recepción:<br>
 ![](https://github.com/JPabloLobato/CFI-2-Redes/blob/main/recepcion.jpg)
-Laboratorio:
+Laboratorio:<br>
 ![](https://github.com/JPabloLobato/CFI-2-Redes/blob/main/laboratorio.jpg)
-
+Aula:<br>
+![](https://github.com/JPabloLobato/CFI-2-Redes/blob/main/aula.jpg)
 #### 8.2 Pruebas y Verificación:
 ![](https://github.com/JPabloLobato/CFI-2-Redes/blob/main/Comprobación.png)
 ![](https://github.com/JPabloLobato/CFI-2-Redes/blob/main/Ping.png)
