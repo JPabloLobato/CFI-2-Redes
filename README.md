@@ -43,45 +43,7 @@ María Díaz, Juan Pablo Lobato, Mauricio Murillo, Cintia Santillán, Jiachen Ye
 
 #### 1.2 Esquema
 A continuación se muestra el esquema del sistema propuesto
-````
-            Internet
-               │
-            Router
-               │
-      Firewall perimetral
-               │
-             switch ──────────┌────────────┬────────────┬
-               │              │            │            │            
-               │         Servidor WWW  Servidor Mail Servidor DNS
-               │
-        Firewall interno
-               │
-  Switch principal (Núcleo de red)
-    │           │
-    │           ├── Sala de servidores
-    │           │     ├── Servidor FTP/SFTP
-    │           │     ├── Servidor Multimedia
-    │           │     └── Servidor Base de Datos
-    │           │
-    │           ├── Recepción
-    │           │     ├── Estaciones de trabajo
-    │           │     ├── Teléfono IP
-    │           │     └── Impresora,altavoz y micrófono
-    │           │
-    │           ├── Biblioteca
-    │           │     ├── Estaciones de trabajo
-    │           │     └── Impresora y altavoz 
-    │           │
-    │           ├── Aula
-    │           │     ├── Estaciones de trabajo
-    │           │     └── Impresora y altavoz 
-    │           │
-     ── ── ── ──└── Laboratorio
-                     ├── Estaciones de trabajo
-                     ├── Impresora,altavoz y micrófono
-                     └── Proyector
-
-````
+![Logo del proyecto](https://github.com/JPabloLobato/CFI-2-Redes/blob/b849c925df9fb88602531062bb7cbee516293099/CFI%202.drawio.png)
 #### Como se observa en el diagrama, se tratra de una red donde hay un router con acceso a internet que lleva firewall con zona desmilitarizada donde se alojan los servidores www/mail/dns, después sale por un firewall interno que lleva a un switch nucleo que forma parte de un anillo de switches que recorre donde cada switch corresponde a su sala pertinente, como sala servidores, sala recepción,sala biblioteca ,sala aula y sala laboratorio para finalmente volver al witch núcleo.
 ---
 ### 2. Capa Física – Capacidad y Modulación
