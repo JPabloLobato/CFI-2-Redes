@@ -42,7 +42,48 @@ María Díaz, Juan Pablo Lobato, Mauricio Murillo, Cintia Santillán, Jiachen Ye
   | Aplicación         | Equivalen a las capas 5, 6 y 7 del modelo OSI. Protocolos de trasnferencia, FTP y SFTP, manejo de contenidos HTTP y HTTPS, etc..                                    |
 
 ---
+````
+            Internet
+               │
+            Router
+               │
+      Firewall perimetral
+               │
+             switch ──────────┌────────────┬────────────┬
+               │              │            │            │            
+               │         Servidor WWW  Servidor Mail Servidor DNS
+               │
+        Firewall interno
+               │
+  Switch principal (Núcleo de red)
+    │           │
+    │           ├── Sala de servidores
+    │           │     ├── Servidor FTP/SFTP
+    │           │     ├── Servidor Multimedia
+    │           │     └── Servidor Base de Datos
+    │           │
+    │           ├── Recepción
+    │           │     ├── Estaciones de trabajo
+    │           │     ├── Teléfono IP
+    │           │     └── Impresora
+    │           │
+    │           ├── Biblioteca
+    │           │     ├── Estaciones de trabajo
+    │           │     ├── Teléfono IP
+    │           │     └── Impresora
+    │           │
+    │           ├── Aula
+    │           │     ├── Estaciones de trabajo
+    │           │     ├── Teléfono IP
+    │           │     └── Impresora
+    │           │
+     ── ── ── ──└── Laboratorio
+                     ├── Estaciones de trabajo
+                     ├── Teléfono IP
+                     ├── Impresora
+                     └── Proyector
 
+````
 ### 2. Capa Física – Capacidad y Modulación
 
 #### 2.1 Capacidad
