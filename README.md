@@ -230,7 +230,9 @@ En esta red vamos a implementar cinco medidas de seguridad:
 #### 8.1 Construcción de la Topología:
 ##### RELLENAR CON LO QUE FALTE
 #### 8.2 Pruebas y Verificación:
+![](https://github.com/JPabloLobato/CFI-2-Redes/blob/main/Comprobación.png)
 ![](https://github.com/JPabloLobato/CFI-2-Redes/blob/main/Ping.png)
+#### este ping envía un paquete de un pc a otra dentro del anillo de switches, en este caso un ping de pc aula a pc biblioteca
 
 --- 
 
