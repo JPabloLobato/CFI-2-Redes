@@ -47,13 +47,37 @@ María Díaz, Juan Pablo Lobato, Mauricio Murillo, Cintia Santillán, Jiachen Ye
 
 #### 2.1 Capacidad
 - **Fórmula de Shannon:**  
-  \( C = B \log_2(1 + \text{SNR}) \)  
-  - \( B = 300 \, \text{MHz} \), \( \text{SNR} = 20 \, \text{dB} \).  
-  - **Resultado:** \( C \approx 1.997 \, \text{Gbps} \).
+  C = B*log2(1 + 100) \)  
+  B = Ancho de banda = 300 MHz, SNR lineal = 10^(20/10) = 10^2 = 100
+  C = 300*10^6*Log2(1 + 100)
+  Formula de Shanon:C=Blog2(1+100)
+  C = 300*10^6*6.657 = 1.997*10^9 = 1.997 Gbps
+  Capacidad mínima=1.997 Gbps  
 
-#### 2.2 Técnicas de Modulación
-- **Cableado:** PAM16 (10GBase-T) para alta estabilidad.  
-- **Inalámbrico:** OFDM con modulación adaptativa (QPSK a 256-QAM).  
+#### 2.2 Selección de Técnicas de Modulación
+Para este proyecto buscamos una plataforma de transferencia de archivos de gran tamaño que sea segura y eficiente, por lo que al seleccionar la técnica de modulación es necesario que esta garantice que sea funcional y resistente ante posibles interferencias. Como vamos a usar tanto conexiones inalámbricas como cableados hay que proponer diferentes técnicas para cada una. 
+
+Las técnicas disponibles son ASK, FSK, PSK, QPSK, QAM(16,64,256),PAM,OFDM. Cada una de estas ofrece un nivel  eficiencia espectral, complejidad y tolerancia al ruido distinta. 
+
+-ASK: Eficiencia espectral baja, Robustez al ruido baja, Complejidad baja 
+
+-FSK: Eficiencia espectral media, Robustez al ruido alta, Complejidad baja 
+
+-PSK: Eficiencia espectral media, Robustez al ruido media, Complejidad media 
+
+-QPSK: Eficiencia espectral buena, Robustez al ruido buena, Complejidad media 
+
+-16-QAM: Eficiencia espectral alta, Robustez al ruido media, Complejidad media-alta 
+
+-64-QAM: Eficiencia espectral muy alta, Robustez al ruido media-baja, Complejidad alta 
+
+- 256-QAM: Eficiencia espectral excelente, Robustez al ruido baja, Complejidad muy alta 
+
+-OFDM: Eficiencia espectral muy alta, Robustez al ruido alta, Complejidad alta 
+
+Para los cables necesitamos escoger un medio físico estable con una señal y tolerancia al ruido alta. Por lo que escogemos la modulación PAM16 con su tecnología integrada 10GBase-T, debido a su rápida y confiable transmisión es la mejor opción disponible además de dejar abierto posible futuras mejoras. 
+
+Para la sección inalámbrica que es más variable y esta más expuesto a interferencias, escogemos OFDM con una modulación adaptativa entre QPSK y 256-QAM, de esta manera se implementan los estándares de Wifi 5 y Wifi 6 permitiendo variar la modulación según la calidad de señal de cada dispositivo, esto genera un equilibrio entre la velocidad, eficiencia y robustez. 
 
 ---
 
