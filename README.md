@@ -228,18 +228,18 @@ En esta red vamos a implementar cinco medidas de seguridad:
 ### 8. Implementación en Cisco Packet Tracer
 
 #### 8.1 Construcción de la Topología:
-![](https://github.com/JPabloLobato/CFI-2-Redes/blob/main/Cisco.jpg)
+![](https://github.com/JPabloLobato/CFI-2-Redes/blob/main/Cisco.jpg)<br>
 #### Modulos:
 DMZ:<br>
-![](https://github.com/JPabloLobato/CFI-2-Redes/blob/main/dmz.jpg)
+![](https://github.com/JPabloLobato/CFI-2-Redes/blob/main/dmz.jpg)<br>
 Servidores:<br>
-![](https://github.com/JPabloLobato/CFI-2-Redes/blob/main/servidores.jpg)
+![](https://github.com/JPabloLobato/CFI-2-Redes/blob/main/servidores.jpg)<br>
 Recepción:<br>
-![](https://github.com/JPabloLobato/CFI-2-Redes/blob/main/recepcion.jpg)
+![](https://github.com/JPabloLobato/CFI-2-Redes/blob/main/recepcion.jpg)<br>
 Laboratorio:<br>
-![](https://github.com/JPabloLobato/CFI-2-Redes/blob/main/laboratorio.jpg)
+![](https://github.com/JPabloLobato/CFI-2-Redes/blob/main/laboratorio.jpg)<br>
 Aula:<br>
-![](https://github.com/JPabloLobato/CFI-2-Redes/blob/main/aula.jpg)
+![](https://github.com/JPabloLobato/CFI-2-Redes/blob/main/aula.jpg)<br>
 #### 8.2 Pruebas y Verificación:
 ![](https://github.com/JPabloLobato/CFI-2-Redes/blob/main/Comprobación.png)
 ![](https://github.com/JPabloLobato/CFI-2-Redes/blob/main/Ping.png)
