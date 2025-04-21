@@ -41,7 +41,8 @@ María Díaz, Juan Pablo Lobato, Mauricio Murillo, Cintia Santillán, Jiachen Ye
   | Transporte         | Parecida a la capa de transporte del modelo OSI. Gestiona los servicios de transporte ya sea confiable o sin conexión, TCP y UDP.                                                            |
   | Aplicación         | Equivalen a las capas 5, 6 y 7 del modelo OSI. Protocolos de trasnferencia, FTP y SFTP, manejo de contenidos HTTP y HTTPS, etc..                                    |
 
----
+#### 1.2 Esquema
+A continuación se muestra el esquema del sistema propuesto
 ````
             Internet
                │
@@ -84,6 +85,7 @@ María Díaz, Juan Pablo Lobato, Mauricio Murillo, Cintia Santillán, Jiachen Ye
                      └── Proyector
 
 ````
+---
 ### 2. Capa Física – Capacidad y Modulación
 
 #### 2.1 Capacidad
