@@ -85,6 +85,7 @@ A continuación se muestra el esquema del sistema propuesto
                      └── Proyector
 
 ````
+Como se observa en el diagrama, se tratra de una red donde hay un router con acceso a internet que lleva firewall con zona desmilitarizada donde se alojan los servidores www/mail/dns, después sale por un firewall interno que lleva a un switch nucleo que forma parte de un anillo de switches que recorre donde cada switch corresponde a su sala pertinente, como sala servidores, sala recepción,sala aula, sala laboratorio y sala biblioteca
 ---
 ### 2. Capa Física – Capacidad y Modulación
 
@@ -98,7 +99,8 @@ A continuación se muestra el esquema del sistema propuesto
   Capacidad mínima=1.997 Gbps  
 
 #### 2.2 Selección de Técnicas de Modulación
-Para este proyecto buscamos una plataforma de transferencia de archivos de gran tamaño que sea segura y eficiente, por lo que al seleccionar la técnica de modulación es necesario que esta garantice que sea funcional y resistente ante posibles interferencias. Como vamos a usar tanto conexiones inalámbricas como cableados hay que proponer diferentes técnicas para cada una. 
+Para este proyecto buscamos una plataforma de transferencia de archivos de gran tamaño que sea segura y eficiente, por lo que al seleccionar la técnica de  
+modulación es necesario que esta garantice que sea funcional y resistente ante posibles interferencias. Como vamos a usar tanto conexiones inalámbricas como cableados hay que proponer diferentes técnicas para cada una. 
 
 Las técnicas disponibles son ASK, FSK, PSK, QPSK, QAM(16,64,256),PAM,OFDM. Cada una de estas ofrece un nivel  eficiencia espectral, complejidad y tolerancia al ruido distinta. 
 
