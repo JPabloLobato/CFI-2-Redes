@@ -228,7 +228,7 @@ En esta red vamos a implementar cinco medidas de seguridad:
 ### 8. Implementación en Cisco Packet Tracer
 
 #### 8.1 Construcción de la Topología:
-##### RELLENAR CON LO QUE FALTE
+![](https://github.com/JPabloLobato/CFI-2-Redes/blob/main/Cisco.jpg)
 #### 8.2 Pruebas y Verificación:
 ![](https://github.com/JPabloLobato/CFI-2-Redes/blob/main/Comprobación.png)
 ![](https://github.com/JPabloLobato/CFI-2-Redes/blob/main/Ping.png)
