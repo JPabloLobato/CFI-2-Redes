@@ -240,6 +240,8 @@ Laboratorio:<br>
 ![](https://github.com/JPabloLobato/CFI-2-Redes/blob/main/laboratorio.jpg)<br>
 Aula:<br>
 ![](https://github.com/JPabloLobato/CFI-2-Redes/blob/main/aula.jpg)<br>
+Biblioteca:<br>
+![](https://github.com/JPabloLobato/CFI-2-Redes/blob/main/biblioteca.jpg)
 #### 8.2 Pruebas y Verificación:
 ![](https://github.com/JPabloLobato/CFI-2-Redes/blob/main/Comprobación.png)
 ![](https://github.com/JPabloLobato/CFI-2-Redes/blob/main/Ping.png)
