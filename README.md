@@ -99,21 +99,24 @@ Para que la transferencia de archivos con TCP sea eficiente, necesitamos calcula
 Para calcular la ventana de transmisión óptima (en bytes) se utiliza: 
 Ventana óptima = RTT × (ancho de banda / 8)
 
-
 O también: 
-#Otra formula rara
+Ventana óptima = RTT × Capacidad
 
 Y, en función del MSS (Maximum Segment Size): 
-Mas cosas raras
+Ventana óptima (en MSS) = (RTT × Capacidad) / MSS
 
 - Capacidad del canal (Shannon): 1.997 Gbps = ( 1.997 \times 10^9 \ bps  
 - RTT (Round Trip Time): 50 ms = 0.05 s (valor típico en LAN/WiFi con buen rendimiento)  
-- MSS: 1460 bytes (típico en Ethernet sobre TCP/IP sin opciones)  
-#otra formula rarisima
+- MSS: 1460 bytes (típico en Ethernet sobre TCP/IP sin opciones)
+
+Capacidad en bytes/s = (1.997 × 10⁹) / 8 = 249.625 × 10⁶ bytes/s  
+Ventana óptima = 0.05 s × 249.625 × 10⁶ = 12.481.250 bytes  
+Ventana óptima en MSS = 12.481.250 / 1460 ≈ 8542 segmentos
 
 Para aprovechar al máximo la velocidad del canal, la ventana TCP debería ser de unos 12,5 MB o 8542 segmentos TCP. Esto requiere que el sistema soporte ventanas grandes (con la opción "window scaling") ya que el tamaño supera el límite clásico de 64 KB.  
 
 Así aseguramos una transmisión fluida y rápida de archivos grandes a través de TCP.
+
 ---
 
 ### 5. Capa de Aplicación – Servicios y Multiplexación
