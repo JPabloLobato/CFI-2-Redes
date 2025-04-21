@@ -97,7 +97,14 @@ La capa de transporte se encarga de asegurar que los datos lleguen correctamente
 Para que la transferencia de archivos con TCP sea eficiente, necesitamos calcular el tamaño óptimo de la ventana, que es la cantidad de datos que pueden enviarse antes de recibir una confirmación (ACK). 
 
 Para calcular la ventana de transmisión óptima (en bytes) se utiliza: 
-#Insertar formula rara
+Ventana  
+o
+ˊ
+ ptima=RTT×( 
+8
+ancho de banda
+​
+ )
 
 O también: 
 #Otra formula rara
