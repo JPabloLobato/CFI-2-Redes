@@ -66,22 +66,19 @@ A continuación se muestra el esquema del sistema propuesto
     │           ├── Recepción
     │           │     ├── Estaciones de trabajo
     │           │     ├── Teléfono IP
-    │           │     └── Impresora
+    │           │     └── Impresora,altavoz y micrófono
     │           │
     │           ├── Biblioteca
     │           │     ├── Estaciones de trabajo
-    │           │     ├── Teléfono IP
-    │           │     └── Impresora
+    │           │     └── Impresora y altavoz 
     │           │
     │           ├── Aula
     │           │     ├── Estaciones de trabajo
-    │           │     ├── Teléfono IP
-    │           │     └── Impresora
+    │           │     └── Impresora y altavoz 
     │           │
      ── ── ── ──└── Laboratorio
                      ├── Estaciones de trabajo
-                     ├── Teléfono IP
-                     ├── Impresora
+                     ├── Impresora,altavoz y micrófono
                      └── Proyector
 
 ````
