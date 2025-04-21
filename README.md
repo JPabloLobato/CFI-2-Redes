@@ -59,32 +59,60 @@ María Díaz, Juan Pablo Lobato, Mauricio Murillo, Cintia Santillán, Jiachen Ye
 
 ### 3. Capa de Red – Subneteo y Enrutamiento
 
-#### 3.1 Subneteo
-- **Bloque IP:** `172.22.53.0/22` (1022 hosts/subred).  
-- **Subredes:**  
-  | Departamento  | Dirección de Red       | Rango de Hosts               |
-  |---------------|------------------------|------------------------------|
-  | Aulas         | 172.22.53.0            | 172.22.53.1 – 172.22.53.254  |
-  | Laboratorios  | 172.22.54.0            | 172.22.54.1 – 172.22.54.254  |
+#### 3.1 Diseño del Esquema de Direccionamiento
+Hemos realizado un subneteo a partir del bloque IP 172.22.53.0/22.  
 
+**Información del bloque original:**  
+- Dirección de red: 172.22.53.0  
+- Máscara: /22 (255.255.255.0)  
+- Clase: Clase B (privada, ya que 172.16.0.0 - 172.31.255.255)  
+
+**Números de hosts disponibles por subred:**  
+- 2^(32-22) = 1024 direcciones IP  
+Debemos restarle las direcciones de red y de broadcast, por lo que se queda en 1022 hosts útiles por cada subred.  
+
+**Direcciones de red disponibles:**  
+Hemos creado un ejemplo dividiendo el bloque 172.22.53.0/22 en 4 subredes para diferentes departamentos: 
+| Subred      | Dirección de Red | Rango de Hosts           | Broadcast       |
+|-------------|------------------|--------------------------|-----------------|
+| Aulas       | 172.22.53.0      | 172.22.53.1 – 172.22.53.254 | 172.22.53.255   |
+| Laboratorios | 172.22.54.0      | 172.22.54.1 – 172.22.54.254 | 172.22.54.255   |
+| Biblioteca  | 172.22.55.0      | 172.22.55.1 – 172.22.55.254 | 172.22.55.255   |
+| Recepción   | 172.22.56.0      | 172.22.56.1 – 172.22.56.254 | 172.22.56.255   |
+| Servidores  | 172.22.58.0      | 172.22.58.1 – 172.22.58.254 | 172.22.58.255   |
 #### 3.2 Enrutamiento
 - **Algoritmo:** Dijkstra para rutas óptimas.  
-
----
+#Insertar foto
 
 ### 4. Capa de Transporte – Selección y Cálculo de Ventana
 
-#### 4.1 Protocolos
-| Servicio               | Protocolo          | Justificación                              |
-|------------------------|--------------------|--------------------------------------------|
-| Transferencia de archivos | TCP + SFTP (puerto 22) | Confiabilidad y cifrado.                |
-| Streaming              | UDP + RTP          | Baja latencia, tolerancia a pérdidas.     |
+#### 4.1 Decisión de Protocolos:
+La capa de transporte se encarga de asegurar que los datos lleguen correctamente desde el emisor hasta el receptor. En este proyecto, usamos dos protocolos distintos según el tipo de contenido: 
+| Servicio              | Protocolo                              | Justificación |
+|-----------------------|---------------------------------------|---------------|
+| Transferencia de archivos | TCP + SFTP (puerto 22)             | -Fiabilidad, control de congestión y reenvío selectivo de pérdidas. -Cifrado extremo a extremo (SSH) y autenticación integrada. |
+| Streaming multimedia  | UDP + RTP (o UDP + QUIC-DASH si HTTP/3 nativo) | -Baja latencia, tolera pérdidas leves sin esperar ACKs. -RTP añade numeración de secuencias y marcas de tiempo para sincronizar audio/vídeo. -QUIC hereda control de congestión y encripta todo sobre UDP, simplificando ACLs y NAT. |
 
-#### 4.2 Ventana Óptima
-- **Cálculo:**  
-  \( \text{Ventana} = \text{RTT} \times \text{Capacidad} = 0.05 \, \text{s} \times 249.625 \, \text{MB/s} \approx 12.5 \, \text{MB} \).  
-- **Segmentos TCP:** 8542 (MSS = 1460 bytes).  
+#### 4.2 Cálculo de la Ventana:
+Para que la transferencia de archivos con TCP sea eficiente, necesitamos calcular el tamaño óptimo de la ventana, que es la cantidad de datos que pueden enviarse antes de recibir una confirmación (ACK). 
 
+Para calcular la ventana de transmisión óptima (en bytes) se utiliza: 
+#Insertar formula rara
+
+O también: 
+#Otra formula rara
+
+Y, en función del MSS (Maximum Segment Size): 
+Mas cosas raras
+
+- Capacidad del canal (Shannon): 1.997 Gbps = ( 1.997 \times 10^9 \ bps  
+- RTT (Round Trip Time): 50 ms = 0.05 s (valor típico en LAN/WiFi con buen rendimiento)  
+- MSS: 1460 bytes (típico en Ethernet sobre TCP/IP sin opciones)  
+#otra formula rarisima
+
+Para aprovechar al máximo la velocidad del canal, la ventana TCP debería ser de unos 12,5 MB o 8542 segmentos TCP. Esto requiere que el sistema soporte ventanas grandes (con la opción "window scaling") ya que el tamaño supera el límite clásico de 64 KB.  
+
+Así aseguramos una transmisión fluida y rápida de archivos grandes a través de TCP.
 ---
 
 ### 5. Capa de Aplicación – Servicios y Multiplexación
