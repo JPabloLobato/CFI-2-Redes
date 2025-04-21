@@ -266,4 +266,3 @@ En esta red vamos a implementar cinco medidas de seguridad:
 
 --- 
 
-**Nota:** Los detalles técnicos y cálculos están basados en el documento original.
